@@ -16,12 +16,12 @@ async def geometry(query: TimeRange):
     departure_records: List[Dict] = await queries.find_records_group(
         date_lower, date_upper, clock_lower, clock_upper, "departure"
     )
-    departure_dict: Dict[int, int] = convert_to_dict(departure_records, 'dest_district')
+    departure_dict: Dict[int, int] = convert_to_dict(departure_records, 'starting_district')
     
     arrive_records: List[Dict] = await queries.find_records_group(
         date_lower, date_upper, clock_lower, clock_upper, "arrive"
     )
-    arrive_dict: Dict[int, int] = convert_to_dict(arrive_records, 'starting_district')
+    arrive_dict: Dict[int, int] = convert_to_dict(arrive_records, 'dest_district')
 
     final_dict: Dict[int, Dict] = {}
     for key in set(departure_dict.keys()).union(set(arrive_dict.keys())):
