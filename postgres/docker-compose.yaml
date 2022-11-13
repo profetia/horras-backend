@@ -1,0 +1,7 @@
+version: '3'
+services:
+  postgres:
+    build: .
+    restart: on-failure
+    ports:
+      - "5432:5432"
