@@ -132,6 +132,8 @@ dmypy.json
 .pyre/
 
 .idea/
-data/
+*.pkl
+*.csv
+*dump
 
 *.dump
