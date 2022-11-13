@@ -17,7 +17,3 @@ async def startup():
 @app.on_event("shutdown")
 async def shutdown():
     await prisma.disconnect()
-
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}

@@ -23,7 +23,7 @@ async def find_records_in_range(date_lower: int, date_upper: int, clock_lower: i
     )
     return records
 
-async def find_num_records_in_range(date_lower: int, date_upper: int, clock_lower: int, clock_upper: int):
+async def find_num_records_in_range(date_lower: int, date_upper: int, clock_lower: int, clock_upper: int) -> int:
     num_records = await prisma.horras.count(
         where={
             "AND": [
