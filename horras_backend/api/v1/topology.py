@@ -19,7 +19,7 @@ def convert_to_dict(records: List[Dict], kind: str) -> Dict[Tuple[int, int], int
 
 
 @router.get("/")
-async def topology(query: Selection):
+async def topology(query: Selection) -> List[Dict[str, int]]:
     date_lower, date_upper = query.date_range
     clock_lower, clock_upper = query.clock_range
     target_nodes = query.nodes
