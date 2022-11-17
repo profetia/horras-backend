@@ -28,6 +28,9 @@ model Horras {
   dest_district       Int
   departure_date      Int
   arrive_date         Int
-
+  dest_lng_group      Float
+  dest_lat_group      Float
+  starting_lng_group  Float
+  starting_lat_group  Float
   @@index([departure_date, arrive_date, departure_time, arrive_time, starting_district, dest_district])
 }
