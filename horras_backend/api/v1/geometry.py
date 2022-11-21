@@ -11,7 +11,7 @@ def convert_to_dict(data: List[Dict], field: str) -> Dict[Tuple[int, int], Dict[
         "count": item["_count"]["_all"]
     } for item in data}
 
-@router.get("/")
+@router.post("/")
 async def geometry(query: TimeRange):
     date_lower, date_upper = query.date_range
     clock_lower, clock_upper = query.clock_range
