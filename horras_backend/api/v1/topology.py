@@ -19,7 +19,7 @@ def convert_to_dict(records: List[Dict], kind: str) -> Dict[Tuple[int, int], int
 
 
 @router.post("/")
-async def topology(query: Selection) -> List[Dict[str, int]]:
+async def topology(query: Selection) -> Dict[str, List[Dict]]:
     date_lower, date_upper = query.date_range
     clock_lower, clock_upper = query.clock_range
     target_nodes = query.nodes
@@ -40,6 +40,9 @@ async def topology(query: Selection) -> List[Dict[str, int]]:
             "yx_num": arrive_dict.get((x, y), 0)
         }
 
-    records: List[Dict] = [{"x": x, "y": y, **final_dict[(x, y)]} for x, y in final_dict.keys()]
+    records: Dict[str, List[Dict]] = {
+        "nodes": list(set([x for x, y in final_dict.keys()] + [y for x, y in final_dict.keys()])),
+        "edges": [{"x": x, "y": y, **final_dict[(x, y)]} for x, y in final_dict.keys()]
+    }
 
     return records
