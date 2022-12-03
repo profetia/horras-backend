@@ -9,3 +9,6 @@ CLOCK_UPPER_BOUND = 1440
 class TimeRange(BaseModel):
     date_range: Tuple[int, int]
     clock_range: Tuple[int, int]
+
+class SampleGroup(TimeRange):
+    sample: bool # false = ungrouped, true = grouped
