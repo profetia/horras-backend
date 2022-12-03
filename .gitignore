@@ -137,3 +137,5 @@ dmypy.json
 *dump
 
 *.dump
+
+/postgres/data
